@@ -20,7 +20,7 @@ services:
     volumes:
       - ${WEB_ROOT}:/var/www/html
     expose:
-      - "9000"
+      - "12360"
     ports:
       - "23461:23460"
     tty: true
