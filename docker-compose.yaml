@@ -23,9 +23,6 @@ services:
       - "9000"
     ports:
       - "23461:23460"
-    depends_on:
-      - mysql
-      - redis
     tty: true
     restart: always
 
@@ -36,9 +33,6 @@ services:
       - ${WEB_ROOT}:/var/www/html
     expose:
       - "9000"
-    depends_on:
-      - mysql
-      - redis
     restart: always
     stdin_open: true
     tty: true
