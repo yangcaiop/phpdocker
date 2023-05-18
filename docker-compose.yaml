@@ -13,6 +13,37 @@ services:
       - php-fpm
     tty: true
     restart: always
+
+  php-cli:
+    build:
+      context: './php-cli'
+    volumes:
+      - ${WEB_ROOT}:/var/www/html
+    expose:
+      - "9000"
+    ports:
+      - "23461:23460"
+    depends_on:
+      - mysql
+      - redis
+    tty: true
+    restart: always
+
+  php-fpm:
+    build:
+      context: './php-fpm'
+    volumes:
+      - ${WEB_ROOT}:/var/www/html
+    expose:
+      - "9000"
+    depends_on:
+      - mysql
+      - redis
+    restart: always
+    stdin_open: true
+    tty: true
+    cap_add:
+      - ALL
 networks:
   default:
     external:
