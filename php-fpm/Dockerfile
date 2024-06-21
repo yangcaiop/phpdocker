@@ -2,6 +2,8 @@ FROM php:8.1-fpm
 
 ENV TZ=Asia/Shanghai
 
+COPY ./sources.list /etc/apt/sources.list
+
 RUN apt-get update && apt-get install -y -f --allow-downgrades \
         sudo \
         libfreetype6-dev \
